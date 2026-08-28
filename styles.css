@@ -2,7 +2,9 @@
 * { box-sizing:border-box; }
 body { margin:0; color:var(--ink); background:var(--paper); font-family:Manrope,sans-serif; }
 .masthead,main,footer { max-width:1440px; margin:auto; padding-left:clamp(22px,5vw,76px); padding-right:clamp(22px,5vw,76px); }
-.masthead { display:flex; align-items:center; justify-content:space-between; padding-top:28px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+.masthead { max-width:none; width:100%; }
+.masthead + main { padding-top:90px; }
+.masthead { display:flex; align-items:center; justify-content:space-between; padding-top:28px; padding-bottom:26px; border-bottom:1px solid var(--line); position:fixed; top:0; left:0; z-index:10; background:var(--paper); }
 .brand-mark { font:650 22px Fraunces,serif; }.brand-mark span { color:var(--rust); font:800 11px Manrope,sans-serif; letter-spacing:.15em; margin-left:8px; }.header-note { color:var(--muted); font:11px/1.6 "DM Mono",monospace; text-align:right; text-transform:uppercase; letter-spacing:.08em; }.header-note b { color:var(--ink); font-weight:500; }
 .intro { max-width:790px; padding-top:clamp(62px,9vw,120px); padding-bottom:clamp(54px,7vw,90px); }.kicker { color:var(--rust); font:500 11px "DM Mono",monospace; letter-spacing:.17em; }.intro h1 { margin:20px 0; font:650 clamp(48px,7vw,94px)/.95 Fraunces,serif; letter-spacing:-.035em; }.intro h1 em { color:var(--teal); font-style:normal; }.intro-copy { max-width:470px; color:var(--muted); font-size:15px; line-height:1.8; }
 .navigation-panel { background:var(--panel); padding:clamp(26px,4vw,56px); border-top:5px solid var(--ink); }.panel-heading,.poem-heading { display:flex; align-items:center; justify-content:space-between; gap:18px; }.panel-heading { margin-bottom:24px; }.panel-heading>div,.poem-heading>div { display:flex; align-items:center; gap:16px; }.section-index { color:var(--rust); font:500 12px "DM Mono",monospace; }.navigation-panel h2 { margin:0; font:650 clamp(23px,3vw,34px) Fraunces,serif; }.panel-meta { color:var(--muted); font:11px "DM Mono",monospace; text-transform:uppercase; }
@@ -13,8 +15,8 @@ body { margin:0; color:var(--ink); background:var(--paper); font-family:Manrope,
 footer { display:flex; justify-content:space-between; padding-top:24px; padding-bottom:24px; color:var(--muted); font:10px "DM Mono",monospace; letter-spacing:.08em; } footer span:first-child { color:var(--rust); font-family:Fraunces,serif; font-size:18px; }
 @media (max-width:700px) { .header-note{display:none}.chapter-grid,.poem-grid{grid-template-columns:repeat(5,1fr)}.poem-heading,.panel-heading{align-items:flex-start;flex-direction:column}.search-box{width:100%}.search-box input{width:100%}.poem-topline{align-items:flex-start;flex-direction:column;gap:22px}.poem-content{display:block}.side-column{margin-top:15px}.poem-controls{align-self:stretch}.poem-controls button{flex:1}footer{gap:14px;flex-wrap:wrap} }
 
-.reader-layout { display:grid; grid-template-columns:minmax(0,1fr) 457px; width:calc(100% + 214px); align-items:start; }
-.navigation-panel { min-width:0; min-height:100%; padding:28px 20px; border-top:0; border-left:1px solid var(--line); position:sticky; top:0; }
+.reader-layout { display:grid; grid-template-columns:minmax(0,1fr) 457px; width:100%; align-items:start; }
+.navigation-panel { min-width:0; min-height:100%; padding:28px 20px; border-top:0; border-left:1px solid var(--line); position:relative; }
 .chapter-grid,.poem-grid { grid-template-columns:repeat(10,minmax(0,1fr)); gap:5px; }
 .chapter-tile { min-height:38px; padding:8px; text-align:center; background:transparent; color:var(--ink); border-color:var(--line); }
 .chapter-tile:nth-child(3n),.chapter-tile:nth-child(4n) { background:transparent; color:var(--ink); }
@@ -27,8 +29,21 @@ footer { display:flex; justify-content:space-between; padding-top:24px; padding-
 .empty-state h1 { margin:20px 0; color:var(--paper); font:650 clamp(42px,5vw,76px)/.95 Fraunces,serif; }.empty-state h1 em { color:var(--teal); font-style:normal; }.empty-state .kicker { margin-top:26px; }.empty-state .intro-copy { color:#aaa89e; }
 .poem-content { grid-template-columns:minmax(0,2fr) minmax(170px,1fr); gap:clamp(24px,4vw,70px); }.reading-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }.reading-grid .text-block p { font-size:14px; line-height:1.9; }.original p { font-size:16px; line-height:1.8; }
 @media (max-width:700px) { .reader-layout { display:block; width:auto; }.navigation-panel { position:static; border-left:0; border-top:1px solid var(--line); }.poem-view { min-height:540px; }.chapter-grid,.poem-grid { grid-template-columns:repeat(5,minmax(0,1fr)); }.poem-grid { max-height:300px; }.reading-grid { grid-template-columns:1fr; gap:0; } }
-.poem-title { font-size:clamp(18px,2vw,28px); }
+.poem-title { font-size:clamp(18px,2vw,22px); }
 .poem-topline { align-items:flex-start; }
 .poem-topline > div:first-child { min-width:0; }
 .poem-controls { flex:0 0 auto; align-self:flex-start; }
 .poem-controls button { min-width:92px; height:36px; white-space:nowrap; }
+.poem-content { grid-template-columns:minmax(0,1.7fr) minmax(0,1.3fr); }
+.poem-grid { align-content:start; grid-auto-rows:27px; }
+@media (min-width:701px) {
+	body { overflow:hidden; }
+	main { max-width:none; }
+	main { padding-top:90px; }
+	.reader-layout { height:calc(100vh - 90px); }
+	.poem-view { height:100%; max-height:100%; overflow-y:auto; }
+	.navigation-panel { height:calc(100vh - 90px); max-height:calc(100vh - 90px); overflow:hidden; top:auto; display:flex; flex-direction:column; }
+	.navigation-panel .chapter-grid { flex:0 0 auto; }
+	.navigation-panel .poem-heading { flex:0 0 auto; }
+	.navigation-panel .poem-grid { flex:1 1 auto; min-height:0; max-height:none; overflow-y:auto; overflow-x:hidden; }
+}

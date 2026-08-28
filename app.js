@@ -1,4 +1,4 @@
-const DATA_URL = "manyoushu_dataset/manyoshu_complete_spaced.csv";
+const DATA_URL = "manyoushu_dataset/manyoshu_complete_final.csv";
 const detailFields = ["Poem_Sub_Ctgry", "Matter", "Notes", "Textual_Varients", "Reading_Varient"];
 const detailLabels = { Poem_Sub_Ctgry: "Poem Number" };
 let poems = [];
@@ -70,7 +70,7 @@ function showPoem(poem, scrollToPoem = true) {
   document.querySelector("#poem-view").innerHTML = `<div class="poem-topline"><div><div class="poem-id">CHAPTER ${poem.Chapter} / SONG ${poem.Poem} / ${position + 1} OF ${songs.length}</div><h2 class="poem-title">${displayText(poem.Poem_Title)}</h2></div><div class="poem-controls"><button id="prev-poem" ${position === 0 ? "disabled" : ""}>← Previous</button><button id="next-poem" ${position === songs.length - 1 ? "disabled" : ""}>Next →</button></div></div><div class="poem-content"><div><div class="text-block original"><h3>Original text</h3><p>${displayText(poem.Original_Text)}</p></div><div class="reading-grid"><div class="text-block"><h3>Kunyomi reading</h3><p>${displayText(poem.Kunyomi_Reading, true)}</p></div><div class="text-block"><h3>Kana transcription</h3><p>${displayText(poem.Kana_Transcription, true)}</p></div></div></div><aside class="side-column">${sideContent}</aside></div>`;
   document.querySelector("#prev-poem").addEventListener("click", () => position > 0 && showPoem(songs[position - 1]));
   document.querySelector("#next-poem").addEventListener("click", () => position < songs.length - 1 && showPoem(songs[position + 1]));
-  if (scrollToPoem) document.querySelector("#poem-view").scrollIntoView({ behavior: "smooth", block: "start" });
+  if (scrollToPoem) document.querySelector("#poem-view").scrollTop = 0;
 }
 
 fetch(DATA_URL).then(response => { if (!response.ok) throw new Error("Dataset could not be loaded"); return response.text(); }).then(text => {
