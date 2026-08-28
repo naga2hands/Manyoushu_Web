@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manyoshu | A Digital Songbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead"><div class="brand-mark">万葉集 <span>/ MANYOSHU</span></div><div class="header-note">A digital songbook<br><b>8th century · 4,561 songs</b></div></header>
+  <main>
+    <div class="reader-layout">
+      <section id="poem-view" class="poem-view" aria-live="polite"><div class="empty-state"><span class="empty-number">03</span><p class="kicker">THE MANYOSHU ARCHIVE</p><h1>Twenty chapters.<br><em>One living anthology.</em></h1><p class="intro-copy">Browse the oldest collection of Japanese poetry by chapter and song number. Select a tile to open the full record.</p></div></section>
+      <aside class="navigation-panel" aria-label="Poem navigation">
+      <div class="panel-heading"><div><span class="section-index">01</span><h2>Choose a chapter</h2></div><span id="chapter-summary" class="panel-meta"></span></div>
+      <div id="chapter-grid" class="chapter-grid"></div>
+      <div class="poem-heading"><div><span class="section-index">02</span><h2>Choose a song</h2></div><label class="search-box"><span>⌕</span><input id="poem-search" type="search" placeholder="Filter song numbers" aria-label="Filter song numbers"></label></div>
+      <div id="poem-grid" class="poem-grid"></div>
+      </aside>
+    </div>
+  </main>
+  <footer><span>万葉集</span><span>MADE FOR CLOSE READING</span><span id="footer-count"></span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
