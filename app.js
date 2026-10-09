@@ -5,6 +5,22 @@ let poems = [];
 let selectedChapter = 1;
 let selectedPoem = null;
 
+function applyPageScale() {
+  const appShell = document.querySelector(".app-shell");
+  const width = window.innerWidth;
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const scale = width <= 1366 || devicePixelRatio >= 1.25 ? 0.75 : 1;
+
+  if (appShell) {
+    appShell.style.transform = `scale(${scale})`;
+    appShell.style.width = `${width / scale}px`;
+    appShell.style.height = `${window.innerHeight / scale}px`;
+  }
+}
+
+applyPageScale();
+window.addEventListener("resize", applyPageScale);
+
 function parseCSV(text) {
   const rows = [];
   let row = [], cell = "", quoted = false;

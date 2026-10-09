@@ -1,6 +1,7 @@
 :root { --ink:#20201c; --muted:#706e64; --paper:#f5f1e8; --panel:#ebe5d8; --line:#d4ccbc; --rust:#bb563e; --teal:#315f5b; --yellow:#e8c45b; }
 * { box-sizing:border-box; }
 body { margin:0; color:var(--ink); background:var(--paper); font-family:Manrope,sans-serif; }
+.app-shell { transform-origin:top left; }
 .masthead,main,footer { max-width:1440px; margin:auto; padding-left:clamp(22px,5vw,76px); padding-right:clamp(22px,5vw,76px); }
 .masthead { max-width:none; width:100%; }
 .masthead + main { padding-top:90px; }
