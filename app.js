@@ -15,6 +15,7 @@ function applyPageScale() {
     appShell.style.transform = `scale(${scale})`;
     appShell.style.width = `${width / scale}px`;
     appShell.style.height = `${window.innerHeight / scale}px`;
+    appShell.style.setProperty("--app-viewport-height", `${window.innerHeight / scale}px`);
   }
 }
 
